@@ -5,7 +5,7 @@ import "strconv"
 
 templ UserList(users []models.User) {
 	<div class="columns is-centered">
-		<div class="column is-half">
+		<div class="column">
 			<table class="table is-fullwidth">
 				<thead>
 					<tr>
@@ -20,8 +20,8 @@ templ UserList(users []models.User) {
 							<th>
 								{ strconv.Itoa(user.ID) }
 							</th>
-							<th>
-								{ user.Name }
+							<th hx-boost="true" hx-target="#container">
+								<a href={ templ.SafeURL("/users/" + strconv.Itoa(user.ID)) }>{ user.Name }</a>
 							</th>
 							<td>
 								<span class="icon">

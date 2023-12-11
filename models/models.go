@@ -25,3 +25,13 @@ func (g *GlobalData) RemoveUser(id int) {
 func (g *GlobalData) AddUser(user User) {
 	g.Users = append(g.Users, user)
 }
+
+// GetUser returns a user from the users slice based on the id provided. Returns nil if no user is found.
+func (g *GlobalData) GetUser(id int) *User {
+	for _, user := range g.Users {
+		if user.ID == id {
+			return &user
+		}
+	}
+	return nil
+}

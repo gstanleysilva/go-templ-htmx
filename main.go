@@ -42,6 +42,7 @@ func main() {
 	r.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("public"))))
 
 	r.Get("/", GetHome)
+	r.Get("/users/{userID}", DisplayUser)
 	r.Delete("/users/{userID}", RemoveUser)
 	r.Post("/users", AddUser)
 
@@ -74,4 +75,14 @@ func RemoveUser(w http.ResponseWriter, r *http.Request) {
 
 	oData.RemoveUser(id)
 	components.UserList(oData.Users).Render(r.Context(), w)
+}
+
+func DisplayUser(w http.ResponseWriter, r *http.Request) {
+	userId, err := strconv.Atoi(chi.URLParam(r, "userID"))
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	user := oData.GetUser(userId)
+	components.DisplayUser(*user).Render(r.Context(), w)
 }

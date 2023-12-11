@@ -1,0 +1,22 @@
+package components
+
+import "github.com/gstanleysilva/go-templ-htmx-bulma/models"
+import "strconv"
+
+templ DisplayUser(user models.User) {
+	<div class="field">
+		<label class="label">ID</label>
+		<div class="control">
+			<input class="input" type="text" value={ strconv.Itoa(user.ID) } disabled/>
+		</div>
+	</div>
+	<div class="field">
+		<label class="label">Name</label>
+		<div class="control">
+			<input class="input" type="text" value={ user.Name } disabled/>
+		</div>
+	</div>
+	<div hx-boost="true">
+		<a class="button" href="/">Go Back</a>
+	</div>
+}
