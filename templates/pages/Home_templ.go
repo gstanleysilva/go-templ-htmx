@@ -10,7 +10,10 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
+import (
+	"github.com/gstanleysilva/go-templ-htmx-bulma/templates/components"
+	"github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
+)
 
 func Home(globalData models.GlobalData) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -48,7 +51,15 @@ func Home(globalData models.GlobalData) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = components.UserList(globalData.Users).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

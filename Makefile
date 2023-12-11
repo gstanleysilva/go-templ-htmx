@@ -3,3 +3,5 @@ run:
 
 gen:
 	@templ generate
+
+exec: gen run

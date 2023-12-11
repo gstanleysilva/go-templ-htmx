@@ -1,0 +1,11 @@
+package components
+
+import "github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
+
+templ UserList(users []models.User) {
+	<ul>
+		for _, user := range users {
+			<li>{ user.Name }</li>
+		}
+	</ul>
+}
