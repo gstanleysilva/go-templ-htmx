@@ -1,11 +1,12 @@
 package components
 
 import "github.com/gstanleysilva/go-templ-htmx-bulma/models"
+import "strconv"
 
 templ UserList(users []models.User) {
 	<ul>
 		for _, user := range users {
-			<li><div>{ user.Name }</div></li>
+			<div hx-delete={ "/users/" + strconv.Itoa(user.ID) } hx-target="#container">{ user.Name }</div>
 		}
 	</ul>
 }
