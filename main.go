@@ -33,6 +33,8 @@ var oData models.GlobalData = models.GlobalData{
 	},
 }
 
+var userIDCount int = 2
+
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
@@ -41,9 +43,21 @@ func main() {
 
 	r.Get("/", GetHome)
 	r.Delete("/users/{userID}", RemoveUser)
+	r.Post("/users", AddUser)
 
 	fmt.Println("Server running on port 3000")
 	http.ListenAndServe(":3000", r)
+}
+
+func AddUser(w http.ResponseWriter, r *http.Request) {
+	userIDCount++
+	user := models.User{
+		ID:   userIDCount,
+		Name: fmt.Sprintf("User %d", userIDCount),
+		Age:  userIDCount * 8,
+	}
+	oData.AddUser(user)
+	components.UserList(oData.Users).Render(r.Context(), w)
 }
 
 func GetHome(w http.ResponseWriter, r *http.Request) {

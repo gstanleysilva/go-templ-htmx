@@ -20,3 +20,8 @@ func (g *GlobalData) RemoveUser(id int) {
 		}
 	}
 }
+
+// AddUser adds a user to the users slice
+func (g *GlobalData) AddUser(user User) {
+	g.Users = append(g.Users, user)
+}
