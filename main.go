@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/gstanleysilva/go-templ-htmx-bulma/templates/pages"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	r.Use(middleware.Logger)
 
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World"))
+		pages.Home().Render(r.Context(), w)
 	})
 
 	fmt.Println("Server running on port 3000")
