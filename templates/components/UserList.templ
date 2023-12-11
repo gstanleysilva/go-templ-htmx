@@ -4,9 +4,34 @@ import "github.com/gstanleysilva/go-templ-htmx-bulma/models"
 import "strconv"
 
 templ UserList(users []models.User) {
-	<ul>
-		for _, user := range users {
-			<div hx-delete={ "/users/" + strconv.Itoa(user.ID) } hx-target="#container">{ user.Name }</div>
-		}
-	</ul>
+	<div class="columns is-centered">
+		<div class="column is-half">
+			<table class="table is-fullwidth">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					for _, user := range users {
+						<tr>
+							<th>
+								{ strconv.Itoa(user.ID) }
+							</th>
+							<th>
+								{ user.Name }
+							</th>
+							<td>
+								<span class="icon">
+									<i class="fas fa-trash" hx-delete={ "/users/" + strconv.Itoa(user.ID) } hx-target="#container"></i>
+								</span>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
 }

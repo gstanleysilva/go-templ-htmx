@@ -10,15 +10,22 @@ templ Home(globalData models.GlobalData) {
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+			<link rel="stylesheet" href="/static/styles.css"/>
 			<script src="/static/htmx.min.js" crossorigin="anonymous"></script>
 			<title>Users List</title>
 		</head>
 		<body>
-			<h1>Hello { globalData.Admin.Name }</h1>
-			<div id="container">
-				@components.UserList(globalData.Users)
+			<div class="container mt-5">
+				<div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+					<h1 class="title">Welcome { globalData.Admin.Name }</h1>
+					<button id="add-user-btn" class="button is-primary mb-5" hx-post="/users" hx-target="#container">Add User</button>
+					<div id="container">
+						@components.UserList(globalData.Users)
+					</div>
+				</div>
 			</div>
-			<button id="add-user-btn" type="button" hx-post="/users" hx-target="#container">Add User</button>
 		</body>
 	</html>
 }
