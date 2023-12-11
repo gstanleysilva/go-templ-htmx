@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
+import "github.com/gstanleysilva/go-templ-htmx-bulma/models"
 
 func UserList(users []models.User) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {

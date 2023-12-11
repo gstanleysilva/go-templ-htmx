@@ -11,8 +11,8 @@ import "io"
 import "bytes"
 
 import (
+	"github.com/gstanleysilva/go-templ-htmx-bulma/models"
 	"github.com/gstanleysilva/go-templ-htmx-bulma/templates/components"
-	"github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
 )
 
 func Home(globalData models.GlobalData) templ.Component {
