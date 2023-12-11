@@ -37,6 +37,8 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
+	r.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("public"))))
+
 	r.Get("/", GetHome)
 	r.Delete("/users/{userID}", RemoveUser)
 

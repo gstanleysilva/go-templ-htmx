@@ -5,7 +5,7 @@ import "github.com/gstanleysilva/go-templ-htmx-bulma/models"
 templ UserList(users []models.User) {
 	<ul>
 		for _, user := range users {
-			<li>{ user.Name }</li>
+			<li><div>{ user.Name }</div></li>
 		}
 	</ul>
 }
