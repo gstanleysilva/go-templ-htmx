@@ -37,7 +37,8 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
-	r.HandleFunc("/", GetHome)
+	r.Get("/", GetHome)
+	r.Delete("/users/{userID}", RemoveUser)
 
 	fmt.Println("Server running on port 3000")
 	http.ListenAndServe(":3000", r)
