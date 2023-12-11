@@ -14,7 +14,9 @@ templ Home(globalData models.GlobalData) {
 		</head>
 		<body>
 			<h1>Hello { globalData.Admin.Name }</h1>
-			@components.UserList(globalData.Users)
+			<div class="container">
+				@components.UserList(globalData.Users)
+			</div>
 		</body>
 	</html>
 }
