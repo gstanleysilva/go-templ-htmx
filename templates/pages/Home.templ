@@ -1,6 +1,8 @@
 package pages
 
-templ Home() {
+import "github.com/gstanleysilva/go-templ-htmx-bulma/templates/models"
+
+templ Home(globalData models.GlobalData) {
 	<html>
 		<head>
 			<meta charset="UTF-8"/>
@@ -8,7 +10,7 @@ templ Home() {
 			<title>Users List</title>
 		</head>
 		<body>
-			<h1>Hello World</h1>
+			<h1>Hello { globalData.Admin.Name }</h1>
 		</body>
 	</html>
 }
